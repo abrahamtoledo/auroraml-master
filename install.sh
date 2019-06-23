@@ -117,7 +117,7 @@ mail.err			/var/log/mail.err
 # Emergencies are sent to everybody logged in.
 #
 *.emerg				:omusrmsg:*
-'
+' > "${syslog_conf}"
 
 
 echo '# Log error and debug to separate files
