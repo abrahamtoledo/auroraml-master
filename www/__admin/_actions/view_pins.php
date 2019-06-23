@@ -1,0 +1,1 @@
+<?php	$pins = DBHelper::Select('pins', '*');?><!DOCTYPE html><html> <head><title>Pin Numbers : </title> </head> <body>	<h4>Pin Numbers : </h4>	<table border="0">	 <?php foreach ($pins as $pin) : ?>	   <tr>		<td><?php print $pin['code'] ?></td>		<td><?php print $pin['value'] ?></td>	   </tr>	 <?php endforeach; ?>	</table> </body></html>

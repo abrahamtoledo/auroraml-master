@@ -1,0 +1,38 @@
+{
+    "apps": {
+        "aurora_suite" : {
+            "appId": "com.ats.android.aurorasuite",
+            "releases": [
+		{
+                    "name": "AuroraSuite-release-v6.3.apk",
+                    "versionCode": 17,
+                    "versionName": "6.3",
+                    "updateUri": "aurora_suite/AuroraSuite-release-v6.3.apk"
+                }
+            ]
+        },
+		"nauta_firewall" : {
+            "appId": "com.ats.android.vpnnautawall",
+            "releases": [
+                {
+					"name": "NautaFirewall-release-v11.0.apk",
+                    "versionCode": 11,
+                    "versionName": "11.0",
+                    "updateUri": "nauta_firewall/NautaFirewall-release-v11.0.apk"
+                }
+            ]
+        },
+		"nauta_cleaner" : {
+            "appId": "com.ats.android.cleaninbox",
+            "releases": [
+                {
+					"name" : "NautaCleaner-release-v3.apk",
+                    "versionCode": 3,
+                    "versionName": "1.2",
+                    "updateUri": "nauta_cleaner/NautaCleaner-release-v3.apk"
+                }
+            ]
+        }
+		
+    }
+}

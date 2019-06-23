@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+ <head><title>Listado de usuarios<? if ($_REQUEST['action']=='view_active_users'): ?>
+    activos <? endif; ?></title>
+ <style type="text/css">
+    body{color: #444}
+ 
+    td, th { padding: 4px 20px; border: none; margin:0}
+    th { background: lightblue; border-bottom: 1px solid #555; text-align: left; color: darkred}
+    table {border: 1px solid #333}
+    td, th {border-right: 1px solid #bbb;}
+    td:first-child, th:first-child {border-right: 1px solid #555 !important;}
+    td:last-child, th:last-child {border-right: none !important;}
+    
+    tr.expired.even td {background: #700; color: white}
+    tr.expired.odd td {background: #900; color: white}
+    
+    tr.normal.even td {background: #eee; color: #444}
+    tr.normal.odd td {background: white; color: #444}
+    
+    
+ </style>
+ </head>
+ <body>
+    <h4>Listado de usuarios<? if ($_REQUEST['action']=='view_active_users'): ?>
+    activos <? endif; ?> :</h4>
+    <form action="<?php print $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+    <table border="0" cellspacing="0" cellpadding="0">
+       <tr>
+        <th>#</th>
+        <th></th>
+        <th>Email</th>
+        <th>Nombre</th>
+        <th>Zona</th>
+        <th>Telefono</th>
+        <th>Movil</th>
+        <th>Expira</th>
+        <th>Manager</th>
+       </tr>
+    
+     <?php foreach ($users as $user) : ?>
+       <tr class="<?= ($k % 2 == 0 ? "even" : "odd") ?> <?= $user['expiration'] < $time ? "expired" : "normal"?>">
+        <td><?php print $k++ ?>)</td>
+        <td><input type="checkbox" name="users[<?= $k - 1 ?>]" value="<?php print $user['email'] ?>" ></td>
+        <td><?php print $user['email'] ?></td>
+        <td><?php print $user['name'] ?></td>
+        <td><?php print $user['zone'] ?></td>
+        <td><?php print $user['phone'] ?></td>
+        <td><?php print $user['mobile'] ?></td>
+        <td><?php print date("d/m/Y", $user['expiration']) ?></td>
+        <td><? if( isset($managers[$user['managerId']]) ) print $managers[$user['managerId']]; ?></td>
+       </tr>
+     <?php endforeach; ?>
+    </table><br />
+    <button type="submit" name="action" value="activate">Activar usuarios seleccionados</button>
+    <input type="hidden" name="success_action" value="<?=$_REQUEST['action']?>">
+    <button type="submit" name="action" value="edit_users">Editar usuarios seleccionados</button>
+    <button type="submit" name="action" value="sms_masivo">Enviar sms a GRUPO seleccionado</button>
+    </form>
+ </body>
+</html>
