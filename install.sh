@@ -144,3 +144,4 @@ cp -r ./www /var/www/html
 chown www-data:www-data /var/www/html -R
 chmod 755 /var/www/html -R
 
+echo "Done !"
