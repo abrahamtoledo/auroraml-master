@@ -17,10 +17,10 @@ read_def (){
 apt install -y postfix 
 apt install -y curl
 apt install -y rsyslog
-apt install -y apache2 
-apt install -y php7.2 libapache2-mod-php php-mysql php-mbstring
+apt install -y apache2
+apt install -y php libapache2-mod-php php-mysql php-mbstring
 
-a2enmod php7.2
+a2enmod php
 
 ####          Syslog               ####
 syslog_conf='/etc/rsyslog.conf'
@@ -140,4 +140,5 @@ if $syslogtag == "auroraml-worker:" then {
 
 ####            WWW                ####
 cp -r ./www /var/www/html
+chown www-data:www-data /var/www/html -R
 
