@@ -20,7 +20,8 @@ apt install -y rsyslog
 apt install -y apache2
 apt install -y php libapache2-mod-php php-mysql php-mbstring
 
-a2enmod php
+phpver=$( php --version | head -n 1 | cut -d " " -f 2 | cut -d "." -f 1,2 )
+a2enmod "php${phpver}"
 
 ####          Syslog               ####
 syslog_conf='/etc/rsyslog.conf'
@@ -141,4 +142,5 @@ if $syslogtag == "auroraml-worker:" then {
 ####            WWW                ####
 cp -r ./www /var/www/html
 chown www-data:www-data /var/www/html -R
+chmod 755 /var/www/html -R
 
