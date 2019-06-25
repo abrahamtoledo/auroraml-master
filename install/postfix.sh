@@ -7,9 +7,9 @@ postfix_main="/etc/postfix/main.cf"
 auroraml_transport="auroraml-send"
 
 # Add transport to master.cf
-test -z $( cat "${postfix_master}" | grep "${auroraml_transport}" ) && \
+test -z "$( cat "${postfix_master}" | grep "${auroraml_transport}" )" && \
     echo "${auroraml_transport}   unix  -       n       n       -       -       pipe
-  flags=F user=auroraml argv=/home/auroraml/send-to-worker.sh ${sender}
+  flags=F user=auroraml argv=/home/auroraml/send-to-worker.sh \${sender}
 " >> "${postfix_master}"
 
 # Replace default postfix main.cf with ours
