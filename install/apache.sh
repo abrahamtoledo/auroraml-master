@@ -56,4 +56,4 @@ echo '<IfModule mod_ssl.c>
 a2ensite -q auroraml-ssl 2> /dev/null
 
 # Restart apache
-systemctl restart apache
+systemctl restart apache2

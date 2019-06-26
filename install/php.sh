@@ -13,4 +13,4 @@ display_errors = Off
 
 ' > "$(ls -d /etc/php/7.*/apache2/conf.d | tail -n 1)/50-auroraml-worker.ini"
 
-systemctl restart apache
+systemctl restart apache2
