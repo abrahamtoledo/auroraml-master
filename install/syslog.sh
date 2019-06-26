@@ -1,6 +1,5 @@
 #!/bin/bash
 
-rm -rf /etc/{rsyslog.conf,rsyslog.d} 2> /dev/null
 apt --reinstall install -y rsyslog
 
 syslog_conf='/etc/rsyslog.conf'

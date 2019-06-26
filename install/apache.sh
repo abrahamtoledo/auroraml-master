@@ -1,6 +1,5 @@
 #!/bin/bash
 
-rm -rf /etc/apache2 2> /dev/null
 apt --reinstall install -y apache2
 
 
