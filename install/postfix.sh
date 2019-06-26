@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf /etc/postfix 2> /dev/null
 apt install -y postfix
 
 postfix_master="/etc/postfix/master.cf"
@@ -7,8 +8,8 @@ postfix_main="/etc/postfix/main.cf"
 auroraml_transport="auroraml-send"
 
 # Add transport to master.cf
-test -z "$( cat "${postfix_master}" | grep "${auroraml_transport}" )" && \
-    echo "${auroraml_transport}   unix  -       n       n       -       -       pipe
+echo "
+${auroraml_transport}   unix  -       n       n       -       -       pipe
   flags=F user=auroraml argv=/home/auroraml/send-to-worker.sh \${sender}
 " >> "${postfix_master}"
 

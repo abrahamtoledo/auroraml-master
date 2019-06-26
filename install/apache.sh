@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf /etc/apache2 2> /dev/null
 apt install -y apache2
 
 

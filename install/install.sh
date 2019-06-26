@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ####     Install Prerequisites     ####
+apt update
+
 apt install -y curl
 
 ####     Functions    ####
@@ -17,6 +19,7 @@ apt install -y curl
 
 . ./postfix.sh
 
+. ./haproxy.sh
+
 
 echo "Done !"
-

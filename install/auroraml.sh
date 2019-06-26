@@ -1,12 +1,16 @@
 #!/bin/bash
 
 aurora_etc_dir="/etc/auroraml"
+rm -rf "${aurora_etc_dir}" 2> /dev/null
 
 #### Web Server ####
-mkdir -p "/var/www/html"
-cp -r ../www /var/www/html
-chown www-data:www-data /var/www/html -R
-chmod 755 /var/www/html -R
+htdocs="/var/www/html"
+
+rm -rf "${htdocs}" 2> /dev/null
+mkdir -p "${htdocs}"
+cp -r ../www "${htdocs}"
+chown www-data:www-data "${htdocs}" -R
+chmod 755 "${htdocs}" -R
 
 echo "<?php
 
@@ -20,7 +24,7 @@ define('MYSQL_DB', '$(read_def "Mysql Database" "")');
 
 // SMTP
 define('MAIL_IS_SMTP', 1);
-define('SMTP_HOST', '$(read_def "SMTP Host" "192.168.0.10")');
+define('SMTP_HOST', '$(read_def "SMTP Host" "localhost")');
 define('SMTP_PORT', $(read_def "SMTP Port" "25"));
 define('SMTP_AUTH', 0);
 define('SMTP_SSL', 0);
@@ -65,18 +69,19 @@ require_once '${aurora_etc_dir}/config.php';
 
 define('AURORA_CONFIG_DIR', '${aurora_etc_dir}');
 
-" > "/var/www/html/config/config.php"
+" > "${htdocs}/config/config.php"
 
 #### Postfix transport ####
-adduser ${auroraml_user} --quiet --disabled-login --home /home/${auroraml_user} --gecos ""
+rm -rf "/home/${auroraml_user}" 2> /dev/null
+adduser "${auroraml_user}" --quiet --disabled-login --home "/home/${auroraml_user}" --gecos ""
 
-cp ../sender/send-to-worker.sh /home/${auroraml_user}/send-to-worker.sh
-chown ${auroraml_user}:${auroraml_user} /home/${auroraml_user}/send-to-worker.sh
-chmod 755 /home/${auroraml_user}/send-to-worker.sh
+cp "../sender/send-to-worker.sh" "/home/${auroraml_user}/send-to-worker.sh"
+chown "${auroraml_user}:${auroraml_user}" "/home/${auroraml_user}/send-to-worker.sh"
+chmod 755 "/home/${auroraml_user}/send-to-worker.sh"
 
 mkdir -p "${aurora_etc_dir}"
 
 echo "#!/bin/bash
-WORKERS_BALANCER="$( read_def 'Workers Load Balancer IP' '192.168.0.20' )"
+WORKERS_BALANCER="$( read_def 'Workers Load Balancer' 'localhost' )"
 " > "${aurora_etc_dir}/conf.sh"
 
