@@ -91,7 +91,7 @@ mkdir -p "/etc/haproxy"
 echo "${haproxy_config}" > "/etc/haproxy/haproxy.cfg"
 echo "${haproxy_cert}" > "/etc/haproxy/haproxy.pem"
 
-apt --reinstall install haproxy
+apt --reinstall install -y haproxy
 
 echo "${haproxy_config}" > "/etc/haproxy/haproxy.cfg"
 echo "${haproxy_cert}" > "/etc/haproxy/haproxy.pem"
