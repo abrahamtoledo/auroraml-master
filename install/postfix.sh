@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf /etc/postfix 2> /dev/null
-apt install -y postfix
+apt --reinstall install -y postfix
 
 postfix_master="/etc/postfix/master.cf"
 postfix_main="/etc/postfix/main.cf"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf /etc/php 2> /dev/null
-apt install -y php libapache2-mod-php php-mysql php-mbstring
+apt --reinstall install -y php libapache2-mod-php php-mysql php-mbstring
 
 # Enable apache module
 phpver=$( php --version | head -n 1 | cut -d " " -f 2 | cut -d "." -f 1,2 )

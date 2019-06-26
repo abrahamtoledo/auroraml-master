@@ -3,7 +3,7 @@
 ####     Install Prerequisites     ####
 apt update
 
-apt install -y curl
+apt --reinstall install -y curl
 
 ####     Functions    ####
 . ./func.sh

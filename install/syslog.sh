@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf /etc/{rsyslog.conf,rsyslog.d} 2> /dev/null
-apt install -y rsyslog
+apt --reinstall install -y rsyslog
 
 syslog_conf='/etc/rsyslog.conf'
 cp "${syslog_conf}" "${syslog_conf}.bk"

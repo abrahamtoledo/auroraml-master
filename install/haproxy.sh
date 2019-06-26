@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf /etc/haproxy 2> /dev/null
-apt install haproxy
+apt --reinstall install haproxy
 
 echo "
 listen stats
