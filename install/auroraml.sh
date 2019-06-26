@@ -82,6 +82,6 @@ chmod 755 "/home/${auroraml_user}/send-to-worker.sh"
 mkdir -p "${aurora_etc_dir}"
 
 echo "#!/bin/bash
-WORKERS_BALANCER="$( read_def 'Workers Load Balancer' '127.0.0.1' )"
+WORKERS_BALANCER="$( read_def 'Workers Load Balancer' '127.0.0.1:8080' )"
 " > "${aurora_etc_dir}/conf.sh"
 

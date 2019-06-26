@@ -27,7 +27,6 @@ listen stats
 frontend workers_front
     bind 127.0.0.1:8080
     mode http
-    stats disable
     default_backend http_back
 
 backend workers_backend
