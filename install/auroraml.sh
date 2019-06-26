@@ -24,7 +24,7 @@ define('MYSQL_DB', '$(read_def "Mysql Database" "")');
 
 // SMTP
 define('MAIL_IS_SMTP', 1);
-define('SMTP_HOST', '$(read_def "SMTP Host" "localhost")');
+define('SMTP_HOST', '$(read_def "SMTP Host" "127.0.0.1")');
 define('SMTP_PORT', $(read_def "SMTP Port" "25"));
 define('SMTP_AUTH', 0);
 define('SMTP_SSL', 0);
@@ -82,6 +82,6 @@ chmod 755 "/home/${auroraml_user}/send-to-worker.sh"
 mkdir -p "${aurora_etc_dir}"
 
 echo "#!/bin/bash
-WORKERS_BALANCER="$( read_def 'Workers Load Balancer' 'localhost' )"
+WORKERS_BALANCER="$( read_def 'Workers Load Balancer' '127.0.0.1' )"
 " > "${aurora_etc_dir}/conf.sh"
 
