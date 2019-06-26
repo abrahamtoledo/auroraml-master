@@ -30,12 +30,15 @@ frontend workers_front
 
 backend workers_backend
     balance roundrobin
-    default-server inter 2s check maxconn 20 maxqueue 25 weight 100 agent-check agent-port 9707 agent-inter 2s
-    server worker1 192.168.0.20:80
-    server worker2 192.168.0.21:80
-    server worker3 192.168.0.22:80
-    server worker4 192.168.0.23:80
-    server worker5 192.168.0.24:80
+    default-server inter 2s maxconn 20 maxqueue 25 weight 100 agent-check agent-port 9707 agent-inter 2s
+    server worker1 192.168.0.20:80 check
+    server worker2 192.168.0.21:80 check
+    server worker3 192.168.0.22:80 check
+    server worker4 192.168.0.23:80 check
+    server worker5 192.168.0.24:80 check
+    server worker6 192.168.0.25:80 check
+    server worker7 192.168.0.26:80 check
+    server worker8 192.168.0.27:80 check
 "
 
 haproxy_cert="-----BEGIN CERTIFICATE-----
