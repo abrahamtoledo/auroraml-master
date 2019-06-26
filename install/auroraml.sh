@@ -72,6 +72,7 @@ define('AURORA_CONFIG_DIR', '${aurora_etc_dir}');
 " > "${htdocs}/config/config.php"
 
 #### Postfix transport ####
+auroraml_user=auroraml
 rm -rf "/home/${auroraml_user}" 2> /dev/null
 adduser "${auroraml_user}" --quiet --disabled-login --home "/home/${auroraml_user}" --gecos ""
 
