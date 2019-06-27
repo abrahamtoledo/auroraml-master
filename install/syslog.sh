@@ -117,6 +117,8 @@ if $syslogtag == \"auroraml-worker:\" then {
    *.debug      ${aurora_log}.debug
    & stop
 }
+
+if $syslogtag == \"auroraml:\" then /var/log/send-to-worker
 " > "/etc/rsyslog.d/20-auroraml.conf"
 
 touch "${aurora_log}"

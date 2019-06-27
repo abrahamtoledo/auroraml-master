@@ -2,7 +2,7 @@
 
 logfile="/var/log/send-to-worker"
 
-logger -f "${logfile}" "Request received from $1"
+logger "Request received from $1"
 
 . /etc/auroraml/conf.sh
 
