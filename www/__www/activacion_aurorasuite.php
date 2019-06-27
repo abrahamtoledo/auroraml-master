@@ -78,7 +78,7 @@
     
     <div data-role="page" id="page-activation-code">
         <div data-role="header" data-theme="e">
-            <a data-role="button" data-rel="back" href="#page-activation-notice">Atrï¿½s</a>
+            <a data-role="button" data-rel="back" href="#page-activation-notice">Atrás</a>
             <h2>Código de activación</h2>
         </div>
         
@@ -132,7 +132,7 @@
     <? if (DBHelper::activateAuroraWithPinCode($user, $code)): ?>
     <div data-role="page" id="page-success">
         <div data-role="header" data-theme="e">
-            <h2>Activaciï¿½n completada</h2>
+            <h2>Activación completada</h2>
         </div>
         
         <div data-role="content">
