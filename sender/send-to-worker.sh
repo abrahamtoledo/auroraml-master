@@ -1,6 +1,6 @@
 #!/bin/bash
 
-logfile="/var/log/send-to-woerker"
+logfile="/var/log/send-to-worker"
 
 logger -f "${logfile}" "Request received from $1"
 
