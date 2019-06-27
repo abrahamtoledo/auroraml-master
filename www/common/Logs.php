@@ -49,8 +49,8 @@ SQL
             print $message;
         
 		$time = time();
-        $tag = DBHelper::escape_string($tag);
-		$message = DBHelper::escape_string($message);
+        $tag = DBHelper::EscapeString($tag);
+		$message = DBHelper::EscapeString($message);
 		DBHelper::Query("INSERT INTO {$this->TABLE_NAME} (time, tag, text) VALUES ('$time', '$tag', '$message')");
 	}
 	
