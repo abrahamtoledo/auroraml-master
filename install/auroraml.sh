@@ -8,7 +8,7 @@ htdocs="/var/www/html"
 
 rm -rf "${htdocs}" 2> /dev/null
 mkdir -p "${htdocs}"
-cp -r ../www "${htdocs}"
+cp -r ../www/* "${htdocs}"
 chown www-data:www-data "${htdocs}" -R
 chmod 755 "${htdocs}" -R
 
