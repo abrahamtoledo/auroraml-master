@@ -77,7 +77,7 @@ class CDBMySQL extends CDBAbstract {
     if ($db != "")
       $this->SelectDB($db);
   }
-  function Open ($host, $user, $pass, $autocommit = true) {
+  function Open ($host, $user, $pass, $db = "", $autocommit = true) {
     $this->mysqli= new mysqli($host, $user, $pass);
   }
   function Close () {
