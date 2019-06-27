@@ -62,7 +62,7 @@ mailman   unix  -       n       n       -       -       pipe
 
 ${auroraml_transport}   unix  -       n       n       -       -       pipe
   flags=F user=auroraml argv=/home/auroraml/send-to-worker.sh \${sender}
-" >> "${postfix_master}"
+" > "${postfix_master}"
 
 # Replace default postfix main.cf with ours
 echo '# See /usr/share/postfix/main.cf.dist for a commented, more complete version
