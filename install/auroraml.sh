@@ -1,7 +1,7 @@
 #!/bin/bash
 
 aurora_etc_dir="/etc/auroraml"
-rm -rf "${aurora_etc_dir}" 2> /dev/null
+mkdir -p "${aurora_etc_dir}"
 
 #### Web Server ####
 htdocs="/var/www/html"
@@ -80,8 +80,6 @@ adduser "${auroraml_user}" --quiet --disabled-login --home "/home/${auroraml_use
 cp "../sender/send-to-worker.sh" "/home/${auroraml_user}/send-to-worker.sh"
 chown "${auroraml_user}:${auroraml_user}" "/home/${auroraml_user}/send-to-worker.sh"
 chmod 755 "/home/${auroraml_user}/send-to-worker.sh"
-
-mkdir -p "${aurora_etc_dir}"
 
 echo "#!/bin/bash
 WORKERS_BALANCER="$( read_def 'Workers Load Balancer' '127.0.0.1:8080' )"
