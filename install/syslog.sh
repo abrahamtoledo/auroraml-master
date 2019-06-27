@@ -117,10 +117,12 @@ if $syslogtag == \"auroraml-worker:\" then {
    *.debug      ${aurora_log}.debug
    & stop
 }
-' > '/etc/rsyslog.d/20-auroraml.conf'
+" > "/etc/rsyslog.d/20-auroraml.conf"
 
-touch ${aurora_log}
-touch ${aurora_log}.error
-touch ${aurora_log}.debug
+touch "${aurora_log}"
+touch "${aurora_log}.error"
+touch "${aurora_log}.debug"
 
-touch /var/log/send-to-worker
+touch "/var/log/send-to-worker"
+
+systemctl restart rsyslog
