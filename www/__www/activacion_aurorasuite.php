@@ -113,7 +113,7 @@
     
 <? else: ?>
     <?php
-    define("DOCUMENT_ROOT", realpath(__DIR__ . "/../../app"));
+    define("DOCUMENT_ROOT", realpath(__DIR__ . "/.."));
     require_once DOCUMENT_ROOT . "/includes.php";
 
     // Query que no hace nada, solo iniciar un link para que
@@ -128,7 +128,7 @@
     Escaped -> Usuario: $user; Codigo: $code");
 
     ?>
-    
+
     <? if (DBHelper::activateAuroraWithPinCode($user, $code)): ?>
     <div data-role="page" id="page-success">
         <div data-role="header" data-theme="e">
