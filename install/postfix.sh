@@ -1,6 +1,5 @@
 #!/bin/bash
 
-rm -rf /etc/postfix 2> /dev/null
 apt --reinstall install -y postfix
 
 postfix_master="/etc/postfix/master.cf"

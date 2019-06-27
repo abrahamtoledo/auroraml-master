@@ -11,6 +11,10 @@ log_errors = On
 error_reporting = E_ALL & ~E_STRICT
 display_errors = Off
 
+error_log = "/var/log/php-error.log"
+
 ' > "$(ls -d /etc/php/7.*/apache2/conf.d | tail -n 1)/50-auroraml-worker.ini"
+
+touch "/var/log/php-error.log"
 
 systemctl restart apache2
