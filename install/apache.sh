@@ -8,6 +8,7 @@ a2enmod -q ssl 2> /dev/null
 
 # Enable Rewrite and htaccess
 a2enmod -q rewrite 2> /dev/null
+
 echo "<Directory /var/www/html>
         AllowOverride All
 </Directory>
