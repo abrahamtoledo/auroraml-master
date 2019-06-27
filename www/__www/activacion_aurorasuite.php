@@ -36,7 +36,7 @@
         <div data-role="content">
         <? if ($_REQUEST['show_alert']): ?><h1 style="color:red">Activación expirada</h1><? endif; ?>
         
-        <h3><b style="color:red">ATENCIóN, INFORMACIóN IMPORTANTE</b>:</h3>
+        <h3><b style="color:red">ATENCIÓN, INFORMACIÓN IMPORTANTE</b>:</h3>
         <p>Antes de realizar cualquier pago, lea bién la siguiente cláusula de nuestros términos y condiciones.</p>
         
         <p><b>Sobre el pago del servicio:</b></p>
@@ -112,7 +112,7 @@
     </div>
     
 <? else: ?>
-    <?
+    <?php
     define("DOCUMENT_ROOT", realpath(__DIR__ . "/../../app"));
     require_once DOCUMENT_ROOT . "/includes.php";
 
@@ -128,6 +128,7 @@
     Escaped -> Usuario: $user; Codigo: $code");
 
     ?>
+    
     <? if (DBHelper::activateAuroraWithPinCode($user, $code)): ?>
     <div data-role="page" id="page-success">
         <div data-role="header" data-theme="e">
