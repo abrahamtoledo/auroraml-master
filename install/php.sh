@@ -13,6 +13,9 @@ display_errors = Off
 
 ; Log errors to apache logs (Default)
 
+; Allow the use of short open tags "<?"
+short_open_tag = On
+
 ' > "$(ls -d /etc/php/7.*/apache2/conf.d | tail -n 1)/50-auroraml-worker.ini"
 
 systemctl restart apache2
