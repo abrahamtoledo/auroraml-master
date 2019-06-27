@@ -48,9 +48,9 @@ SQL
 		if (@$_REQUEST['verbose']) 
             print $message;
         
-        $time = time();
-        $tag = mysql_escape_string($tag);
-		$message = mysql_escape_string($message);
+		$time = time();
+        $tag = DBHelper::escape_string($tag);
+		$message = DBHelper::escape_string($message);
 		DBHelper::Query("INSERT INTO {$this->TABLE_NAME} (time, tag, text) VALUES ('$time', '$tag', '$message')");
 	}
 	
