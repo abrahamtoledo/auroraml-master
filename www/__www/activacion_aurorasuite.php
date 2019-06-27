@@ -130,6 +130,7 @@
     ?>
 
     <? if (DBHelper::activateAuroraWithPinCode($user, $code)): ?>
+    <?php error_log("Activated user=$user, code=$code, new_expiration=" . DBHelper::getUserExpirationTime($user), LOG_INFO) ?>
     <div data-role="page" id="page-success">
         <div data-role="header" data-theme="e">
             <h2>Activación completada</h2>
@@ -144,6 +145,7 @@
         
     </div>
     <? elseif(DBHelper::isPinCodeUsed($code)): ?>
+    <?php error_log("Pin code used user=$user, code=$code", LOG_INFO) ?>
     <div data-role="page" id="page-code-used">
         <div data-role="header" data-theme="e">
             <a data-role="button" data-rel="back" href="#page-activation-code">Atrás</a>
@@ -158,6 +160,7 @@
         
     </div>
     <? else: ?>
+    <?php error_log("Error al activar user=$user, code=$code", LOG_INFO) ?>
     <div data-role="page" id="page-invalid-code">
         <div data-role="header" data-theme="e">
             <a data-role="button" data-rel="back" href="#page-activation-code">Atrás</a>
