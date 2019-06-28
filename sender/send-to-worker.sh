@@ -9,7 +9,7 @@ tmpfile=$( mktemp /tmp/mailreq.XXXXXX )
 cat > ${tmpfile}
 
 # Send request to workers
-curl -F "email=@${tmpfile}" http://${WORKERS_BALANCER}/run.php -s > null &
+curl -F "email=@${tmpfile}" http://${WORKERS_BALANCER}/run.php -s > /dev/null &
 logger -t auroraml "Request sent to workers pool"
 
 # Pause for 100 miliseconds then safely delete temp file
