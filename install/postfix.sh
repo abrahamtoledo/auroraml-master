@@ -122,7 +122,7 @@ alias_database = hash:/etc/aliases
 
 transport_maps = hash:/etc/postfix/transport
 
-' > "${postfix_main}"
+" > "${postfix_main}"
 
 echo "${mail_domain}  ${auroraml_transport}:
 .${mail_domain}  ${auroraml_transport}:
