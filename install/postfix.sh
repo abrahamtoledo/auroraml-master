@@ -102,8 +102,8 @@ smtp_tls_session_cache_database = btree:\${data_directory}/smtp_scache
 
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
 
-myhostname = mail.${mail_domain}
-myorigin = ${mail_domain}
+myhostname = mail.${mail_origin}
+myorigin = ${mail_origin}
 
 mydestination = \$myhostname, \$myorigin, localhost.localdomain, localhost.localdomain, localhost
 
@@ -124,8 +124,8 @@ transport_maps = hash:/etc/postfix/transport
 
 " > "${postfix_main}"
 
-echo "${mail_domain}  ${auroraml_transport}:
-.${mail_domain}  ${auroraml_transport}:
+echo "${mail_origin}  ${auroraml_transport}:
+.${mail_origin}  ${auroraml_transport}:
 " > "/etc/postfix/transport"
 
 postmap "/etc/postfix/transport"
