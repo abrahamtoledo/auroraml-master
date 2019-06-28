@@ -107,6 +107,8 @@ myorigin = ${mail_origin}
 
 mydestination = \$myhostname, \$myorigin, localhost.localdomain, localhost.localdomain, localhost
 
+virtual_mailbox_domains = ${mail_origin}
+
 relayhost = 
 
 mynetworks = 127.0.0.0/8 192.168.0.0/24 [::ffff:127.0.0.0]/104 [::1]/128
