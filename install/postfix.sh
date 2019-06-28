@@ -6,6 +6,8 @@ postfix_master="/etc/postfix/master.cf"
 postfix_main="/etc/postfix/main.cf"
 auroraml_transport="auroraml-send"
 
+mail_origin=$( read_def "Mail Origin" "auroraml.net" )
+
 # copy master.cf
 echo "#
 # ==========================================================================
@@ -65,7 +67,7 @@ ${auroraml_transport}   unix  -       n       n       -       -       pipe
 " > "${postfix_master}"
 
 # Replace default postfix main.cf with ours
-echo '# See /usr/share/postfix/main.cf.dist for a commented, more complete version
+echo "# See /usr/share/postfix/main.cf.dist for a commented, more complete version
 
 
 # Debian specific:  Specifying a file name will cause the first
@@ -73,13 +75,13 @@ echo '# See /usr/share/postfix/main.cf.dist for a commented, more complete versi
 # is /etc/mailname.
 #myorigin = /etc/mailname
 
-smtpd_banner = $myhostname ESMTP $mail_name (Debian/GNU)
+smtpd_banner = \$myhostname ESMTP \$mail_name (Debian/GNU)
 biff = no
 
 # appending .domain is the MUAs job.
 append_dot_mydomain = no
 
-# Uncomment the next line to generate "delayed mail" warnings
+# Uncomment the next line to generate \"delayed mail\" warnings
 #delay_warning_time = 4h
 
 readme_directory = no
@@ -92,18 +94,18 @@ compatibility_level = 2
 smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
 smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
 smtpd_use_tls=yes
-smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
-smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+smtpd_tls_session_cache_database = btree:\${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:\${data_directory}/smtp_scache
 
 # See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
 # information on enabling SSL in the smtp client.
 
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
 
-myhostname = mail.auroraml.net
-myorigin = auroraml.net
+myhostname = mail.${mail_domain}
+myorigin = ${mail_domain}
 
-mydestination = $myhostname, $myorigin, localhost.localdomain, localhost.localdomain, localhost
+mydestination = \$myhostname, \$myorigin, localhost.localdomain, localhost.localdomain, localhost
 
 relayhost = 
 
@@ -122,8 +124,8 @@ transport_maps = hash:/etc/postfix/transport
 
 ' > "${postfix_main}"
 
-echo "auroraml.net  ${auroraml_transport}:
-.auroraml.net  ${auroraml_transport}:
+echo "${mail_domain}  ${auroraml_transport}:
+.${mail_domain}  ${auroraml_transport}:
 " > "/etc/postfix/transport"
 
 postmap "/etc/postfix/transport"
