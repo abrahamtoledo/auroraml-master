@@ -107,7 +107,7 @@ echo "# Log error and debug to separate files
 & stop
 
 
-if \$syslogtag == \"auroraml-worker:\" then {
+if \$syslogtag startswith \"auroraml-worker\" then {
    *.warning    ${aurora_log}.error
    & stop
 
