@@ -1,1 +1,0 @@
-<!DOCTYPE html><html><head><title>Admin Panel</title></head><body>  <a href="/webspace.php">Web Space</a><br>  <?php foreach(glob(AROOT . "/_actions/*.php") as $file): ?>	<a href="<?php print /*$_SERVER['PHP_SELF'] .*/ "?action=" . basename($file, ".php") ?>"><?php print basename($file, ".php") ?></a><br>  <?php endforeach; ?></body></html>
